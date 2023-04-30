@@ -6,7 +6,7 @@ import moment from "moment";
 import Button from "react-bootstrap/Button";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
-import { Form } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -40,7 +40,9 @@ const Header = () => {
               navbarScroll
             >
               <Nav.Link href="#action1">
-                <p className="">Home</p>
+                <p className="">
+                  <Link to='/'>Home</Link>
+                </p>
               </Nav.Link>
               <Nav.Link href="#action2">
                 <p className="">About</p>
@@ -51,7 +53,9 @@ const Header = () => {
             </Nav>
 
             <div className="d-flex gap-3">
-              <Button variant="dark" className="px-4">LogIn</Button>
+              <Button variant="dark" className="px-4">
+                <Link to="/login">LogIn</Link>
+              </Button>
 
               <img src={profile} alt="" />
             </div>
