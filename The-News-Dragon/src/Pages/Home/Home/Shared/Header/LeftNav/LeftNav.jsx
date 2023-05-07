@@ -14,7 +14,7 @@ const LeftNav = () => {
     return (
       <div>
         <h3>All Category</h3>
-        {catagories.map((Category) => console.log(Category.name))}
+        {/* {catagories.map((Category) => console.log(Category.name))} */}
         {catagories.map((Category) => (
           <p key={Category.id}>
             <Link to={`/catagories/${Category.id}`}>{Category.name}</Link>

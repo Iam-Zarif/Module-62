@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../../../../assets/logo.png";
 import profile from '../../../../../assets/account.png'
 import moment from "moment";
@@ -7,9 +7,12 @@ import Button from "react-bootstrap/Button";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../../../Providers/AuthProvider";
+import NavBar from "../NavBar/NavBar";
 
 
 const Header = () => {
+  const {user} = useContext(AuthContext);
   return (
     <Container>
       <section className="text-center mt-5">
@@ -29,39 +32,7 @@ const Header = () => {
           </Marquee>
         </div>
       </section>
-
-      <Navbar expand="lg">
-        <Container fluid>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="mx-auto my-2 my-lg-0 "
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
-              <Nav.Link href="#action1">
-                <p className="">
-                  <Link to='/'>Home</Link>
-                </p>
-              </Nav.Link>
-              <Nav.Link href="#action2">
-                <p className="">About</p>
-              </Nav.Link>
-              <Nav.Link href="#action3">
-                <p className="">Career</p>
-              </Nav.Link>
-            </Nav>
-
-            <div className="d-flex gap-3">
-              <Button variant="dark" className="px-4">
-                <Link to="/login">LogIn</Link>
-              </Button>
-
-              <img src={profile} alt="" />
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <NavBar></NavBar>
     </Container>
   );
 };

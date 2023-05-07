@@ -1,12 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from '../Header';
+import { AuthContext } from '../../../../../../Providers/AuthProvider';
+import Title from '../../../../../../Hooks/Title';
 
 const Register = () => {
+Title('register')
+  const { createUser } = useContext(AuthContext);
     const handleSignUp = (e) => {
       e.preventDefault();
       const form = e.target;
@@ -14,7 +18,13 @@ const Register = () => {
       const email = form.email.value;
       const password = form.password.value;
       const confirmPassword = form.confirmPassword.value;
-      console.log(name,email, password,confirmPassword );
+      console.log("Name :",name,",email",email,",Password:", password,",",confirmPassword );
+    createUser(email,password)
+    .then(result =>{
+      const createdUser = result.user;
+      console.log(createdUser);
+    })
+    .catch(error => console.log(error))
     };
     return (
       <>
